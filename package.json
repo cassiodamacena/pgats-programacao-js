@@ -1,0 +1,16 @@
+{
+  "name": "pgats-programacao-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "Cassio P. Damacena",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^11.5.0"
+  }
+}
