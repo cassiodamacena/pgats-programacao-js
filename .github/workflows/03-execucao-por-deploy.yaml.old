@@ -1,0 +1,35 @@
+# CI de Nível 03 - Disparo após o deploy
+
+name: "Execução após o deploy"
+
+# Regras de disparo
+# workflow_dispatch permite que este workflow seja acionado manualmente.
+# workflow_run permite que este workflow seja acionado após a conclusão de outro workflow.
+# schedule permite que este workflow seja executado em um horário específico.
+
+on:
+  workflow_run:
+    workflows: ["Execução diária"]
+    types:
+      - completed
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+
+      - name: Instando yarn
+        run: npm install -g yarn
+
+      - name: Instando dependencias
+        run: yarn
+
+      - name: Instalando dependencias
+        run: yarn playwright install
+
+      - name: Executando testes e2e
+        run: yarn run e2e
