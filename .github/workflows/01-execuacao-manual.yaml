@@ -11,14 +11,8 @@ jobs:
         with:
           node-version: latest
 
-      - name: Instando yarn
-        run: npm install -g yarn
-
-      - name: Instando dependencias
-        run: yarn
-
       - name: Instalando dependencias
-        run: yarn playwright install
+        run: npm install
 
       - name: Executando testes e2e
-        run: yarn run e2e
+        run: npm test
